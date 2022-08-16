@@ -6,4 +6,3 @@ from videogamereview.models import Game, User
 @app.route("/")
 def home():
     return render_template("base.html")
-    
