@@ -1,5 +1,7 @@
-from flask import render_template
-from videogamereview import app, db
+from flask import (render_template, request,
+    redirect, session, url_for
+    )
+from videogamereview import app, db, mongo
 from videogamereview.models import Game, User
 
 
