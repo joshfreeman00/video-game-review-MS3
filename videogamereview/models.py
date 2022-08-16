@@ -29,6 +29,7 @@ class User(db.Model):
         # __repr__ to represent itself in the form of a string
         return self.username
 
+
 # the code below is a class model for Review, this will be implemented through mongoDB
 # class Review(db.Model):
     # id = db.Column(db.Integer, primary_key=True)
