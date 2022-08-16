@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Reviews</title>
+</head>
+<body>
+    {% for review in reviews %}
+        {{ review.review_title }}<br>
+        {{ review.user_id }}<br>
+        {{ review.game_id }}<br>
+        {{ review.review_desc }}<br>
+    {% endfor %}
+</body>
+</html>
