@@ -12,7 +12,7 @@ def get_reviews():
     return render_template("reviews.html")
 
 
-@app.route("/add_review" methods=["GET", "POST"])
+@app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if "user" not in session:
         flash("You must be logged in to write a review!")
@@ -23,6 +23,7 @@ def add_review():
             "review_title": request.form.get("review_title"),
             "review_by": session["user"],
             "game_name": request.form.get("game_name"),
+            "game_id": request.form.get("game_id"),
             "review_desc": request.form.get("review_desc")
         }
         mongo.db.reviews.insert_one(review)
@@ -46,6 +47,7 @@ def edit_review(review_id):
             "review_title": request.form.get("review_title"),
             "review_by": session["user"],
             "game_name": request.form.get("game_name"),
+            "game_id": request.form.get("game_id"),
             "review_desc": request.form.get("review_desc")
         }
         mongo.db.tasks.update({"_id": ObjectId(review_id)}, submit)
@@ -60,8 +62,19 @@ def games():
     return render_template("games.html")
 
 
+@app.route("/get_games")
+def get_games():
+
+    games = list(Game.query.order_by(Game.game_name).all())
+    return render_template("games.html", games=games)
+    
+
 @app.route("/add_game", methods=["GET", "POST"])
 def add_game():
+    if "user" is not in session or session["user"] != "admin":
+        flash("You must be admin to add Games!")
+        return redirect(url_for("get_games"))
+
     if request.method == "POST":
         game = Game(
             game_name=request.form.get("game_name"),
@@ -72,6 +85,43 @@ def add_game():
         )
         db.session.add(game)
         db.session.commit()
+        return redirect(url_for("get_games"))
+    return render_template("games.html",s game=game)
+
+
+# route for editing games
+@app.route("/edit_game/<int:game_id>", methods=["GET", "POST"])
+def edit_game(game_id):
+    if "user" is not in session or session["user"] != "admin":
+        flash("You must be admin to edit Games!")
+        return redirect(url_for("get_games"))
+
+    game = Game.query.get_or_404(game_id)
+    if request.method == "POST":
+        game = Game(
+            game_name=request.form.get("game_name"),
+            developer=request.form.get("developer"),
+            genre=request.form.get("game_name"),
+            release_year=Int(request.form.get("release_year")),
+            game_description=request.form.get("game_description")
+        )
+        db.session.commit()
+        flash(f"Succesfully edited {game_name}")
+        return redirect(url_for("get_games"))
+    return render_template("games.html", game=game)
+
+
+@app.route("/delete_game/<int:game_id>", methods=["GET", "POST"])
+def delete_game(game_id):
+    if "user" is not in session or session["user"] != "admin":
+        flash("You must be admin to delete Games!")
+        return redirect(url_for("get_games"))
+
+    game = Game.query.get_or_404(game_id)
+    db.session.delete(game)
+    db.session.commit()
+    mongo.db.reviews.delete_many({"category_id": int(game_id)})
+    return redirect(url_for("get_games"))
 
 
 # the User Authentication code below is from the Code Institute lessons by Matt
