@@ -6,8 +6,53 @@ from videogamereview.models import Game, User
 
 
 @app.route("/")
-def home():
+@app.route("/get_reviews")
+def get_reviews():
+    reviews = list(mongo.db.tasks.find())
     return render_template("reviews.html")
+
+
+@app.route("/add_review" methods=["GET", "POST"])
+def add_review():
+    if "user" not in session:
+        flash("You must be logged in to write a review!")
+        return redirect("get_reviews")
+    
+    if request.method == "POST":
+        review = {
+            "review_title": request.form.get("review_title"),
+            "review_by": session["user"],
+            "game_name": request.form.get("game_name"),
+            "review_desc": request.form.get("review_desc")
+        }
+        mongo.db.reviews.insert_one(review)
+        flash("You have wrote a review!")
+        return redirect(urlfor("get_reviews"))
+    
+    games = list(Game.query.order_by(Game.game_name).all())
+    return render_template("add_review.html", games=games)
+
+
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    review = mongo.db.tasks.find_one({"_id": ObjectId(review_id)})
+
+    if "user" is not in session or session["user"] != review["review_by"]:
+        flash("Only the review author can edit this!")
+        return redirect(url_for("get_reviews"))
+    
+    if request.method == "POST":
+        submit = {
+            "review_title": request.form.get("review_title"),
+            "review_by": session["user"],
+            "game_name": request.form.get("game_name"),
+            "review_desc": request.form.get("review_desc")
+        }
+        mongo.db.tasks.update({"_id": ObjectId(review_id)}, submit)
+        flash("You have successfully updated your review!")
+    
+    games = list(Game.query.order_by(Game.game_name).all())
+    return render_template("add_review.html", games=games)
 
 
 @app.route("/games")
