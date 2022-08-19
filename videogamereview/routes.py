@@ -6,12 +6,15 @@ from videogamereview.models import Game, User
 
 
 @app.route("/")
+
+# route for reviews page
 @app.route("/get_reviews")
 def get_reviews():
     reviews = list(mongo.db.tasks.find())
     return render_template("reviews.html")
 
 
+# route for adding reviews
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if "user" not in session:
@@ -34,10 +37,12 @@ def add_review():
     return render_template("add_review.html", games=games)
 
 
+# route for editing reviews
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     review = mongo.db.tasks.find_one({"_id": ObjectId(review_id)})
 
+    # checking if the user is the same user that created the review in question
     if "user" is not in session or session["user"] != review["review_by"]:
         flash("Only the review author can edit this!")
         return redirect(url_for("get_reviews"))
@@ -57,11 +62,23 @@ def edit_review(review_id):
     return render_template("add_review.html", games=games)
 
 
-@app.route("/games")
-def games():
-    return render_template("games.html")
+# route to delete a review
+@app.route("/delete_review/<review_id>", methods=["GET", "POST"])
+def delete_review(review_id):
+
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    
+    # check if the user is the same user as the author or is the admin
+    if "user" not in session or session["user"] != review["review_by"] or "admin":
+        flash("Only the review author or admin can delete reviews!")
+        return redirect(url_for("get_reviews"))
+    
+    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+    flash("The review has been successfully deleted.")
+    return redirect(url_for("get_reviews"))
 
 
+# route for games page
 @app.route("/get_games")
 def get_games():
 
@@ -69,8 +86,11 @@ def get_games():
     return render_template("games.html", games=games)
     
 
+# route to add a game
 @app.route("/add_game", methods=["GET", "POST"])
 def add_game():
+
+    # check if the user is admin
     if "user" is not in session or session["user"] != "admin":
         flash("You must be admin to add Games!")
         return redirect(url_for("get_games"))
@@ -111,6 +131,7 @@ def edit_game(game_id):
     return render_template("games.html", game=game)
 
 
+# route for deleteing a game
 @app.route("/delete_game/<int:game_id>", methods=["GET", "POST"])
 def delete_game(game_id):
     if "user" is not in session or session["user"] != "admin":
@@ -120,7 +141,8 @@ def delete_game(game_id):
     game = Game.query.get_or_404(game_id)
     db.session.delete(game)
     db.session.commit()
-    mongo.db.reviews.delete_many({"category_id": int(game_id)})
+    # deleting a game will delte every review associated to the game
+    mongo.db.reviews.delete_many({"game_id": int(game_id)})
     return redirect(url_for("get_games"))
 
 
