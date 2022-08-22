@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <title>One Stop Games Review</title>
 </head>
-<body>
 
-    Video Games Review
-    
+<body>
+    <header>
+        <!-- navbar -->
+        <nav class="indigo darken-4">
+            <div class="nav-wrapper">
+                <a href="{{ url_for('get_reviews') }}" class="brand-logo">One Stop Game Reviews</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_games') }}">Games</a></li>
+                    {% if session.user %}
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <!-- mobile navbar -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
+            <li><a href="{{ url_for('get_games') }}">Games</a></li>
+            {% if session.user %}
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+        </ul>
+    </header>
+
+
+    <main class="container">
+        {% block content%}
+        {% endblock %}
+    </main>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-copyright">
+                <div class="container">
+                    <a href="https://github.com/joshfreeman00/video-game-review-MS3" class="left">GitHub</a>
+                </div>
+                <div class="container">
+                    <a class="right" href="https://codeinstitute.net">&copy; Code Institute</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </body>
+
 </html>
