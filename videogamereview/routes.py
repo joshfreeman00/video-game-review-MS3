@@ -43,7 +43,7 @@ def edit_review(review_id):
     review = mongo.db.tasks.find_one({"_id": ObjectId(review_id)})
 
     # checking if the user is the same user that created the review in question
-    if "user" is not in session or session["user"] != review["review_by"]:
+    if "user" not in session or session["user"] != review["review_by"]:
         flash("Only the review author can edit this!")
         return redirect(url_for("get_reviews"))
     
@@ -91,7 +91,7 @@ def get_games():
 def add_game():
 
     # check if the user is admin
-    if "user" is not in session or session["user"] != "admin":
+    if "user" not in session or session["user"] != "admin":
         flash("You must be admin to add Games!")
         return redirect(url_for("get_games"))
 
@@ -106,13 +106,13 @@ def add_game():
         db.session.add(game)
         db.session.commit()
         return redirect(url_for("get_games"))
-    return render_template("games.html",s game=game)
+    return render_template("games.html", game=game)
 
 
 # route for editing games
 @app.route("/edit_game/<int:game_id>", methods=["GET", "POST"])
 def edit_game(game_id):
-    if "user" is not in session or session["user"] != "admin":
+    if "user" not in session or session["user"] != "admin":
         flash("You must be admin to edit Games!")
         return redirect(url_for("get_games"))
 
@@ -134,7 +134,7 @@ def edit_game(game_id):
 # route for deleteing a game
 @app.route("/delete_game/<int:game_id>", methods=["GET", "POST"])
 def delete_game(game_id):
-    if "user" is not in session or session["user"] != "admin":
+    if "user" not in session or session["user"] != "admin":
         flash("You must be admin to delete Games!")
         return redirect(url_for("get_games"))
 
