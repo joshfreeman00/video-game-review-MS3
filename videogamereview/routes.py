@@ -1,4 +1,5 @@
 from flask import flash, render_template, request, redirect, session, url_for
+from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
 from videogamereview import app, db, mongo
 from videogamereview.models import Game, User
@@ -104,7 +105,7 @@ def add_game():
         db.session.add(game)
         db.session.commit()
         return redirect(url_for("get_games"))
-    return render_template("games.html", game=game)
+    return render_template("add_game.html")
 
 
 # route for editing games
@@ -151,7 +152,7 @@ def delete_game(game_id):
 def register():
     if request.method == "POST":
         # check if username already exists in db
-        existing_user = User.query.filter(User.user_name == \
+        existing_user = User.query.filter(User.username == \
             request.form.get("username").lower()).all()
     
         if existing_user:
@@ -159,7 +160,7 @@ def register():
             return redirect(url_for("register"))
 
         user = User(
-                user_name=request.form.get("username").lower(),
+                username=request.form.get("username").lower(),
                 password=generate_password_hash(request.form.get("password"))
             )
         
@@ -179,7 +180,7 @@ def register():
 def login():
     if request.method == "POST":
         # check if username exists in db
-        existing_user = User.query.filter(User.user_name == \
+        existing_user = User.query.filter(User.username == \
                                            request.form.get("username").lower()).all()
 
         if existing_user:
