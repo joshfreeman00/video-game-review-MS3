@@ -1,12 +1,10 @@
-from flask import (render_template, request,
-    redirect, session, url_for
-    )
+from flask import flash, render_template, request, redirect, session, url_for
+from bson.objectid import ObjectId
 from videogamereview import app, db, mongo
 from videogamereview.models import Game, User
 
 
 @app.route("/")
-
 # route for reviews page
 @app.route("/get_reviews")
 def get_reviews():

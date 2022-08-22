@@ -1,9 +1,7 @@
 import os
-from flask import (Flask, render_template, request,
-    redirect, session, url_for)
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env  # noqa
 
@@ -17,13 +15,5 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 db = SQLAlchemy(app)
 mongo = PyMongo(app)
-
-
-@app.route("/")
-@app.route("/get_reviews")
-def get_reviews():
-    reviews = mongo.db.reviews.find()
-    return render_template("reviews.html", reviews=reviews)
-
 
 from videogamereview import routes  # noqa
