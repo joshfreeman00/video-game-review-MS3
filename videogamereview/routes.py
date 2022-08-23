@@ -117,17 +117,15 @@ def edit_game(game_id):
 
     game = Game.query.get_or_404(game_id)
     if request.method == "POST":
-        game = Game(
-            game_name=request.form.get("game_name"),
-            developer=request.form.get("developer"),
-            genre=request.form.get("game_name"),
-            release_year=Int(request.form.get("release_year")),
-            game_description=request.form.get("game_description")
-        )
+        game.game_name=request.form.get("game_name"),
+        game.developer=request.form.get("developer"),
+        game.genre=request.form.get("game_name"),
+        game.release_year=request.form.get("release_year"),
+        game.game_description=request.form.get("game_description")
         db.session.commit()
-        flash(f"Succesfully edited {game_name}")
+        flash(f"Succesfully edited")
         return redirect(url_for("get_games"))
-    return render_template("games.html", game=game)
+    return render_template("edit_game.html", game=game)
 
 
 # route for deleteing a game
