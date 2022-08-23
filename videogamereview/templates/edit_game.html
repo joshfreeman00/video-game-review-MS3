@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content%}
+
+<h3 class="center-align">Edit a Game</h3>
+
+<div class="card-panel row">
+    <form class="col s12" method="POST" action="{{ url_for('edit_game', game_id=game.id) }}">
+        <!-- game name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="game_name" name="game_name" value="{{ game.game_name }}" type="text" minlength="1"
+                    maxlength="50" class="validate" required>
+                <label for="game_name">Game Name</label>
+            </div>
+        </div>
+        <!-- developer -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="developer" name="developer" value="{{ game.developer }}" type="text" minlength="1"
+                    maxlength="50" class="validate" required>
+                <label for="developer">Developed By</label>
+            </div>
+        </div>
+        <div class="row">
+            <!-- genre -->
+            <div class="input-field col s6">
+                <input id="genre" name="genre" value="{{ game.genre }}" type="text" minlength="1" maxlength="50"
+                    class="validate" required>
+                <label for="genre">Genre</label>
+            </div>
+            <!-- release year -->
+            <div class="input-field col s6">
+                <input id="release_year" name="release_year" value="{{ game.release_year }}" type="text" minlength="1"
+                    maxlength="4" class="validate" required>
+                <label for="release_year">Release Year</label>
+            </div>
+        </div>
+        <!-- game description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="game_description" name="game_description" value="{{ game.game_description }}" type="text"
+                    minlength="1" maxlength="300" class="validate" required>
+                <label for="game_description">Description</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="input-field col s12 center-align">
+                <button class="btn-large indigo darken-4" type="submit">Edit Game <i
+                        class="fas fa-edit right"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
