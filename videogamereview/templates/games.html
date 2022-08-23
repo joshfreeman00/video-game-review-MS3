@@ -5,8 +5,34 @@
 
 <div class="row">
     <div class="left">
-        <a href="{{ url_for('add_game')}}" class="btn-large indigo darken-4">Add a Game <i class="fas fa-circle-plus right"></i></a>
+        <a href="{{ url_for('add_game')}}" class="btn-large indigo darken-4">Add a Game <i
+                class="fas fa-circle-plus right"></i></a>
     </div>
+</div>
+
+<div class="row">
+    {% for game in games %}
+    <div class="col s12 m6 l3">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ url_for('static', filename='videogamereview/static/images/sample-1.jpg') }}"
+                    alt="Game cover">
+                <a class="btn-floating halfway-fab waves-effect waves-light indigo"><i class="fas fa-plus"></i></a>
+            </div>
+            <div class="card-content black-text">
+                <span class="card-title">{{ game.game_name }}</span>
+                <p>Developer: {{ game.developer }}</p><br>
+                <p>Genre: {{ game.genre }}</p><br>
+                <p>Release year: {{ game.release_year }}</p><br>
+                <p>Synopsis: {{ game.game_description }}</p>
+                <div class="card-action">
+                    <a href="#" class="btn green accent-4">Edit</a>
+                    <a href="#" class="btn red right">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
