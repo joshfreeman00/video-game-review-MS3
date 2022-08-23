@@ -99,7 +99,7 @@ def add_game():
             game_name=request.form.get("game_name"),
             developer=request.form.get("developer"),
             genre=request.form.get("game_name"),
-            release_year=Int(request.form.get("release_year")),
+            release_year=request.form.get("release_year"),
             game_description=request.form.get("game_description")
         )
         db.session.add(game)
