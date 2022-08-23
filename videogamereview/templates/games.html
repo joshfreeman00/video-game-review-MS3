@@ -26,7 +26,7 @@
                 <p>Release year: {{ game.release_year }}</p><br>
                 <p>Synopsis: {{ game.game_description }}</p>
                 <div class="card-action">
-                    <a href="#" class="btn green accent-4">Edit</a>
+                    <a href="{{ url_for('edit_game', game_id=game.id) }}" class="btn green accent-4">Edit</a>
                     <a href="#" class="btn red right">Delete</a>
                 </div>
             </div>
