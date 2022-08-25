@@ -98,7 +98,7 @@ def add_game():
         game = Game(
             game_name=request.form.get("game_name"),
             developer=request.form.get("developer"),
-            genre=request.form.get("game_name"),
+            genre=request.form.get("genre"),
             release_year=request.form.get("release_year"),
             game_description=request.form.get("game_description")
         )
@@ -119,7 +119,7 @@ def edit_game(game_id):
     if request.method == "POST":
         game.game_name=request.form.get("game_name"),
         game.developer=request.form.get("developer"),
-        game.genre=request.form.get("game_name"),
+        game.genre=request.form.get("genre"),
         game.release_year=request.form.get("release_year"),
         game.game_description=request.form.get("game_description")
         db.session.commit()
