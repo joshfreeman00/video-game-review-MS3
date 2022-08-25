@@ -4,5 +4,5 @@ document.addEventListener("DOMContentLoaded", function() {
     M.Sidenav.init(sidenav);
 
     let modal = document.querySelectorAll('.modal');
-    M.Modal.init(elems, options);
+    M.Modal.init(modal);
 });
