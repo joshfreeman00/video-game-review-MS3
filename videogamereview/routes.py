@@ -123,7 +123,7 @@ def edit_game(game_id):
         game.release_year=request.form.get("release_year"),
         game.game_description=request.form.get("game_description")
         db.session.commit()
-        flash(f"Succesfully edited")
+        flash("Succesfully edited")
         return redirect(url_for("get_games"))
     return render_template("edit_game.html", game=game)
 
