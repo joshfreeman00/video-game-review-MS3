@@ -14,35 +14,42 @@
     {% for game in games %}
     <div class="col s12 m6 l3">
         <div class="card">
-            <div class="card-image">
-                <img src="{{ url_for('static', filename='videogamereview/static/images/sample-1.jpg') }}"
+            <!-- <div class="card-image">
+                <img class="activator"
+                    src="{{ url_for('static', filename='videogamereview/static/images/sample-1.jpg') }}"
                     alt="Game cover">
                 <a class="btn-floating halfway-fab waves-effect waves-light indigo"><i class="fas fa-plus"></i></a>
-            </div>
+            </div> -->
             <div class="card-content black-text">
-                <span class="card-title">{{ game.game_name }}</span>
+                <span class="card-title activator">{{ game.game_name }}<i
+                        class="fa-solid fa-angles-up right "></i></span>
+                <div class="card-action">
+                    <a href="{{ url_for('edit_game', game_id=game.id) }}" class="btn green accent-4">Edit</a>
+                    <a href="#modal-{{ game._id }}" class="btn red right modal-trigger">Delete</a>
+                </div>
+            </div>
+            <div class="card-reveal black-text">
+                <span class="card-title">{{ game.game_name }}<i class="fa-solid fa-xmark right"></i></span>
                 <p>Developer: {{ game.developer }}</p><br>
                 <p>Genre: {{ game.genre }}</p><br>
                 <p>Release year: {{ game.release_year }}</p><br>
                 <p>Synopsis: {{ game.game_description }}</p>
-                <div class="card-action">
-                    <a href="{{ url_for('edit_game', game_id=game.id) }}" class="btn green accent-4">Edit</a>
-                    <a href="#modal-{{ game._id }}" class="btn red right modal-trigger">Delete</a>
-                    <!-- modal structure -->
-                    <div id="modal-{{ game._id }}" class="modal">
-                        <div class="modal-content">
-                            <h4>Are you sure you want to delete this Game?</h4>
-                            <p>This cannot be undone</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="{{ url_for('delete_game', game_id=game.id) }}" class="btn red">Delete</a>
-                            <a class="btn indigo darken-4 modal-close">Cancel</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+    <!-- modal structure -->
+    <div id="modal-{{ game._id }}" class="modal">
+        <div class="modal-content black-text center-align">
+            <h4>Are you sure you want to delete this game?</h4>
+            <p>This cannot be undone</p>
+        </div>
+        <div class="modal-footer">
+            <a href="{{ url_for('delete_game', game_id=game.id) }}" class="btn red left">Delete</a>
+            <a class="btn indigo darken-4 modal-close">Cancel</a>
+        </div>
+    </div>
+
     {% endfor %}
 </div>
 
