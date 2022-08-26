@@ -25,7 +25,6 @@ def add_review():
             "review_title": request.form.get("review_title"),
             "review_by": session["user"],
             "game_name": request.form.get("game_name"),
-            "game_id": request.form.get("game_id"),
             "review_desc": request.form.get("review_desc")
         }
         mongo.db.reviews.insert_one(review)
