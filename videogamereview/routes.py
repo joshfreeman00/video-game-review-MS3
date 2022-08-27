@@ -29,7 +29,7 @@ def add_review():
         }
         mongo.db.reviews.insert_one(review)
         flash("You have wrote a review!")
-        return redirect(urlfor("get_reviews"))
+        return redirect(url_for("get_reviews"))
     
     games = list(Game.query.order_by(Game.game_name).all())
     return render_template("add_review.html", games=games)
