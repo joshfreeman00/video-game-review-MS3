@@ -21,18 +21,22 @@
                 <label for="review_by">Review by</label>
             </div>
         </div>
+        <!-- game name -->
         <div class="row">
-            <!-- game name -->
             <div class="input-field col s12">
-                <input id="game_name" name="game_name" type="text" minlength="1" maxlength="50" class="validate"
-                    required>
-                <label for="game_name">Game name</label>
+                <select id="game_name" name="game_name" class="validate" required>
+                    <option value="" disabled selected>Choose a game</option>
+                    {% for game in games %}
+                        <option value="{{ game.game_name }}">{{ game.game_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="game_name">Game</label>
             </div>
         </div>
         <!-- review description -->
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="review_desc" name="review_desc" type="text" minlength="1" maxlength="300" class="validate"
+                <textarea id="review_desc" name="review_desc" type="text" minlength="1" maxlength="300" class="materialize-textarea validate"
                     required></textarea>
                 <label for="review_desc">Description</label>
             </div>
