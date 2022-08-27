@@ -9,8 +9,8 @@ from videogamereview.models import Game, User
 # route for reviews page
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = list(mongo.db.tasks.find())
-    return render_template("reviews.html")
+    reviews = list(mongo.db.reviews.find())
+    return render_template("reviews.html", reviews=reviews)
 
 
 # route for adding reviews
