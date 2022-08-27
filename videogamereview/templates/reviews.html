@@ -11,10 +11,21 @@
 </div>
 
 {% for review in reviews %}
-{{ review.review_title }}<br>
-{{ review.username }}<br>
-{{ review.game_name }}<br>
-{{ review.review_desc }}<br>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content black-text">
+                <strong class="card-title">{{ review.review_title }}</strong>
+                <span>Review by: {{ review.review_by }}</span><br>
+                <i>This review is for the game: {{ review.game_name }}</i>
+            <div class="card-action black-text">
+                <p>{{ review.review_desc }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endfor %}
 
 {% endblock %}
