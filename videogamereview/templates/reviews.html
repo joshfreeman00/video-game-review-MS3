@@ -2,6 +2,14 @@
 {% block content %}
 
 <h3 class="center-align">Reviews</h3><br>
+
+<div class="row">
+    <div class="left">
+        <a href="{{ url_for('add_review')}}" class="btn-large indigo darken-4">Add a review <i
+                class="fas fa-circle-plus right"></i></a>
+    </div>
+</div>
+
 {% for review in reviews %}
 {{ review.review_title }}<br>
 {{ review.username }}<br>
