@@ -16,23 +16,24 @@
         <!-- review by -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="review_by" name="review_by" value="{{ session['user'] }}" type="text" minlength="1" maxlength="50" class="validate"
-                    required readonly>
+                <input id="review_by" name="review_by" value="{{ session['user'] }}" type="text" minlength="1"
+                    maxlength="50" class="validate" required readonly>
                 <label for="review_by">Review by</label>
             </div>
         </div>
         <div class="row">
             <!-- game name -->
             <div class="input-field col s12">
-                <input id="game_name" name="game_name" type="text" minlength="1" maxlength="50" class="validate" required>
+                <input id="game_name" name="game_name" type="text" minlength="1" maxlength="50" class="validate"
+                    required>
                 <label for="game_name">Game name</label>
             </div>
         </div>
         <!-- review description -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="review_desc" name="review_desc" type="text" minlength="1" maxlength="300"
-                    class="validate" required>
+                <textarea id="review_desc" name="review_desc" type="text" minlength="1" maxlength="300" class="validate"
+                    required></textarea>
                 <label for="review_desc">Description</label>
             </div>
         </div>
