@@ -16,11 +16,19 @@
     <div class="col s12">
         <div class="card">
             <div class="card-content black-text">
+                {% for star in range(5) %}
+                    {% if loop.index <= review.review_score|int %}
+                        <i class="fa-solid fa-star"></i>
+                    {% else %}
+                        <i class="fa-regular fa-star"></i>
+                    {% endif %}
+                {% endfor %}
                 <strong class="card-title">{{ review.review_title }}</strong>
                 <span>Review by: {{ review.review_by }}</span><br>
                 <i>This review is for the game: {{ review.game_name }}</i>
-            <div class="card-action black-text">
-                <p>{{ review.review_desc }}</p>
+                <div class="card-action black-text">
+                    <p>{{ review.review_desc }}</p>
+                </div>
             </div>
         </div>
     </div>
