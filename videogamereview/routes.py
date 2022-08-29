@@ -19,18 +19,19 @@ def add_review():
     if "user" not in session:
         flash("You must be logged in to write a review!")
         return redirect("get_reviews")
-    
+
     if request.method == "POST":
         review = {
             "review_title": request.form.get("review_title"),
             "review_by": session["user"],
             "game_name": request.form.get("game_name"),
-            "review_desc": request.form.get("review_desc")
+            "review_desc": request.form.get("review_desc"),
+            "review_score": request.form.get("review_score")
         }
         mongo.db.reviews.insert_one(review)
         flash("You have wrote a review!")
         return redirect(url_for("get_reviews"))
-    
+
     games = list(Game.query.order_by(Game.game_name).all())
     return render_template("add_review.html", games=games)
 
@@ -44,18 +45,19 @@ def edit_review(review_id):
     if "user" not in session or session["user"] != review["review_by"]:
         flash("Only the review author can edit this!")
         return redirect(url_for("get_reviews"))
-    
+
     if request.method == "POST":
         submit = {
             "review_title": request.form.get("review_title"),
             "review_by": session["user"],
             "game_name": request.form.get("game_name"),
             "game_id": request.form.get("game_id"),
-            "review_desc": request.form.get("review_desc")
+            "review_desc": request.form.get("review_desc"),
+            "review_score": request.form.get("review_score")
         }
         mongo.db.tasks.update({"_id": ObjectId(review_id)}, submit)
         flash("You have successfully updated your review!")
-    
+
     games = list(Game.query.order_by(Game.game_name).all())
     return render_template("add_review.html", games=games)
 
@@ -65,12 +67,12 @@ def edit_review(review_id):
 def delete_review(review_id):
 
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    
+
     # check if the user is the same user as the author or is the admin
-    if "user" not in session or session["user"] != review["review_by"] or "admin":
+    if "user" not in session or session["user"] != review["review_by"] or "admin":  # noqa
         flash("Only the review author or admin can delete reviews!")
         return redirect(url_for("get_reviews"))
-    
+
     mongo.db.reviews.remove({"_id": ObjectId(review_id)})
     flash("The review has been successfully deleted.")
     return redirect(url_for("get_reviews"))
@@ -82,7 +84,7 @@ def get_games():
 
     games = list(Game.query.order_by(Game.game_name).all())
     return render_template("games.html", games=games)
-    
+
 
 # route to add a game
 @app.route("/add_game", methods=["GET", "POST"])
@@ -98,11 +100,12 @@ def add_game():
             game_name=request.form.get("game_name"),
             developer=request.form.get("developer"),
             genre=request.form.get("genre"),
-            release_year=request.form.get("release_year"),
+            release_year=int(request.form.get("release_year")),
             game_description=request.form.get("game_description")
         )
         db.session.add(game)
         db.session.commit()
+        flash("Succesfully added")
         return redirect(url_for("get_games"))
     return render_template("add_game.html")
 
@@ -116,11 +119,11 @@ def edit_game(game_id):
 
     game = Game.query.get_or_404(game_id)
     if request.method == "POST":
-        game.game_name=request.form.get("game_name"),
-        game.developer=request.form.get("developer"),
-        game.genre=request.form.get("genre"),
-        game.release_year=request.form.get("release_year"),
-        game.game_description=request.form.get("game_description")
+        game.game_name = request.form.get("game_name"),
+        game.developer = request.form.get("developer"),
+        game.genre = request.form.get("genre"),
+        game.release_year = int(request.form.get("release_year")),
+        game.game_description = request.form.get("game_description")
         db.session.commit()
         flash("Succesfully edited")
         return redirect(url_for("get_games"))
@@ -139,6 +142,7 @@ def delete_game(game_id):
     db.session.commit()
     # deleting a game will delte every review associated to the game
     mongo.db.reviews.delete_many({"game_id": int(game_id)})
+    flash("Succesfully deleted")
     return redirect(url_for("get_games"))
 
 
@@ -149,9 +153,10 @@ def delete_game(game_id):
 def register():
     if request.method == "POST":
         # check if username already exists in db
-        existing_user = User.query.filter(User.username == \
-            request.form.get("username").lower()).all()
-    
+        existing_user = User.query.filter(
+            User.username == request.form.get(
+                "username").lower()).all()
+
         if existing_user:
             flash("Username is taken! Please try another username.")
             return redirect(url_for("register"))
@@ -160,7 +165,7 @@ def register():
                 username=request.form.get("username").lower(),
                 password=generate_password_hash(request.form.get("password"))
             )
-        
+
         db.session.add(user)
         db.session.commit()
 
@@ -177,19 +182,19 @@ def register():
 def login():
     if request.method == "POST":
         # check if username exists in db
-        existing_user = User.query.filter(User.username == \
-                                           request.form.get("username").lower()).all()
+        existing_user = User.query.filter(
+            User.username == request.form.get(
+                "username").lower()).all()
 
         if existing_user:
             print(request.form.get("username"))
             # check if the hashed password matches user input
-            if check_password_hash(
-                    existing_user[0].password, request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Hello, {}".format(
-                            request.form.get("username")))
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+            if check_password_hash(existing_user[0].password, request.form.get("password")):  # noqa
+                session["user"] = request.form.get("username").lower()
+                flash("Hello, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -206,7 +211,6 @@ def login():
 # route for the users profile
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-        
     if "user" in session:
         return render_template("profile.html", username=session["user"])
 
