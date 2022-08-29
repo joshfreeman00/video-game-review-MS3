@@ -12,8 +12,10 @@ class Game(db.Model):
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
-        return "#{0} - Game: {1} | Developer: {2} | Genre: {3} | Release Year: {4} | Description: {5}".format(
-            self.id, self.game_name, self.developer, self.genre, self.release_year, self.game_description
+        return (
+            f"{self.id} - Game: {self.game_name} | Developer: {self.developer}"
+            f" | Genre: {self.genre} | Release Year: {self.release_year} |"
+            f" Description: {self.game_description}"
         )
 
 
