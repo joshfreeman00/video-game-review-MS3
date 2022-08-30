@@ -162,7 +162,7 @@ The images used throughout the website are relivant to each game.
 
 ### Fonts 
 
-unknown.
+As ![Materialize](https://materializecss.com/) is used for CSS. Their default font is Roboto 2.0, which is whats used throughout the site.
 
 ## Wireframes
 
@@ -172,8 +172,8 @@ The wireframes for the webpage can be viewed here.
 
 * [HTML5](https://en.wikipedia.org/wiki/HTML5)
 * [CSS](https://en.wikipedia.org/wiki/CSS)
-* [JavaScript](*)
-* [Python](*)
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
 ## Tools
 
@@ -202,10 +202,10 @@ To view all testing documentation click [here](TESTING.md)
 ## Credits
 
 * [Font Awesome](https://fontawesome.com/icons) - The icons used.
-* [Materialize](*)
+* [Materialize](https://materializecss.com/) - For CSS formatting and styling.
 * [Stack Overflow](https://stackoverflow.com/) - For help debugging and fixes throughout.
 * My mentor - For helpful tips and debugging.
-* Love Running - The code to make the hero-image and animation effect on the homepage was used from Code Institute.
+* Task Manager Walkthrough project - The code for user registration and log in was used from Code Institute.
 * [Wikipedia](*) - For the images used for the games.
 
 
