@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align">Add a Review</h3>
+
+<div class="card-panel row">
+    <form class="col s12" method="POST" action="{{ url_for('add_review') }}">
+        <!-- review title -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="review_title" name="review_title" value="{{ review.review_title }}" type="text" minlength="1"
+                    maxlength="50" class="validate" required>
+                <label for="review_title">Review title</label>
+            </div>
+        </div>
+        <!-- review by -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="review_by" name="review_by" value="{{ session['user'] }}" type="text" minlength="1"
+                    maxlength="50" required readonly>
+                <label for="review_by">Review by</label>
+            </div>
+        </div>
+        <!-- game name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="game_name" name="game_name" value="{{ review.game_name }}" type="text" minlength="1"
+                    maxlength="50" required readonly>
+                <label for="game_name">Game</label>
+            </div>
+        </div>
+        <!-- review score -->
+        <div class="row">
+            <div class="input-field col s12">
+                <p class="range-field">
+                    <input type="range" id="review_score" name="review_score" value="{{ review.review_score }}" min="1"
+                        max="5" required>
+                    <label for="review_score">Rating</label>
+                </p>
+            </div>
+        </div>
+        <!-- review description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="review_desc" name="review_desc" value="{{ review.review_desc }}" type="text" minlength="1"
+                    maxlength="300" class="materialize-textarea validate" required></textarea>
+                <label for="review_desc">Description</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="input-field col s12 center-align">
+                <button class="btn-large indigo darken-4" type="submit">Edit Review <i
+                        class="fas fa-circle-plus right"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
