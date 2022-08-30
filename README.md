@@ -1,108 +1,216 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# One Stop Game Reviews
 
-Welcome joshfreeman00,
+One Stop Game Reviews is a website designed to allow users to add reviews and rate the video games they have played.
+A deployed link is available [here.](*)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Showcase of the site
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+![showcase](*)
 
-## Gitpod Reminders
+## UX
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Goals
 
-`python3 -m http.server`
+The aim of the website is to allow the users to write reviews on their opinions of the game and rate it out of 5. Games are updated and added by the 'admin'.
 
-A blue button should appear to click: _Make Public_,
+### User:
 
-Another blue button should appear to click: _Open Browser_.
+As a user;
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+* I want to understand the context of the website and what it has to offer.
+* I want to be able to register an account with the website to keep track of the reviews I have posted.
+* I want to easily log into my already registered account.
+* I want to easily log out of the account I am logged into.
+* I would like to access the site easily on a mobile phone or tablet.
+* I want to be able to check if there are any additional games that have been added.
+* I would like to be able to edit the reviews I have created.
+* I would like to be able to delete the reviews I have created.
+* I would like defensive programming to be in effect if I was to attempt to delete a review.
+* I would like the privilage of only the author of the review to be able to edit their own review.
 
-A blue button should appear to click: _Make Public_,
+### Admin:
 
-Another blue button should appear to click: _Open Browser_.
+As a admin;
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+* I would like to add and manage games that users are able to create a review for.
+* I would like to be able to visually be able to see what users have rated the games, using star icons.
+* I would like the ability to delete any review for any reason deemed neccessary.
+* I would want the deletion of a game to delete any reviews that is associated with said game.
+* I would like defensive programming to be in effect if I was to attempt to delete a game.
 
-To log into the Heroku toolbelt CLI:
+## Structure
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Logo and Navigation bar
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+* The name of the website, One Stop Game Reviews, is located on the top left of the webpage, along with the ability to return to the review page just by clicking on the logo.
+* The navigation links are located on the top right of the webpage, which links to the other available pages. Here users can easily use these links to navigate from each webpage.
+* For smaller devices, the navigation bar changes to a burger menu for a more responsive design for mobile or tablet users, this allows for a compact and user-friendly design. 
 
-------
+![nav_bar](*)
 
-## Release History
+![nav_bar_burger](*)
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### Header
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+* The header cotains text displaying which page you are currently on.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+![header](*)
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Footer
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+* The footer contains external links to both Github and The Code Institute.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+![footer](*)
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+### Review Page
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+* The review page is the very first page the user lands on, as stated by the header. Here the user can see the reviews left by other users, seeing their rating, who the created the review and the reviews description.
+* Above the reviews is a button that reads "Add a review". If the user is not logged into an account, it will flash a message, stating that the user needs to be logged in first before creating a review. If the user is logged in, this button takes them to the "Add Review" page.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+![review_page](*)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Add review page
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+* The add review page is access by one, being logged into an account and two, interacting with the "add review" button on the review page.
+* The add review page consists of a form that has 5 input fields; the reviews title, reviews creator, the games name, the review rating amd finally the reviews description.
+- The users username has already prefilled the "Review by" input field and is set to read only.
+- All input fields (with the exception of the "review by" field) are required to submit the form, this is highlighted by the change of text color to red.
+* Once the form has been filled in, the user can click the "Add Review" button, which will create a review and send the user back to the reviews page.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+![add_review](*)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### Edit review page
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+* Similar to the "Add review" page, the edit page has the same form as the add page. The difference is that the Game name input field is now sent to read only, therefore you cannot change which game you are reviewing.
+* Once the review has been edited, the user can click the edit review button, this edits the database and changes whatever the user edited. This also sends the user back to the reviews page.
+* For defensive programming, only the user that created the review (the author) can edit the review.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+![edit_review](*)
 
-------
+### Games page
 
-## FAQ about the uptime script
+* The game page is where the user is able to browse the games the admin has published.
+* Each game has its own card with its title and a image of the game.
+- A icon (two chevrons pointing up ) can be clicked, which reveals more information about the game.
+- For the admin, There is a edit button and a delete button underneath the title of the game.
+* Above the game cards is a button to add a game.
 
-**Why have you added this script?**
+![games_page](*)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### Add game page
 
-**How will this affect me?**
+* The add game page is similar to the add reviews page, but only the admin can access this page.
+* Each input field is required as shown by the change of the text color to red.
+* The add game button at the bottom of the form publishes the game in the format of a card to the games page.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+![add_games](*)
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+### Edit game page
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+* The edit game page is the same as the add game page and as before, only the admin can access this page.
+* All input fields are able to be edited and changed.
+* Once finished, and the Edit game button is clicked on, It sends the admin back to the games page and changes the games details.
 
-**So….?**
+![edit_games](*)
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+### Profile page
 
-**Can I opt out?**
+* The profile page has all of the reviews that the current user has created.
+* The header for the page changes, depending on who is logged in.
+- Along with the pages header, the reviews shown will also change as stated above.
+* Here the user can also edit/delete their reviews.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+![profile_page](*)
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+### Log in page
 
-**Anything more?**
+* The log in page contains the relevant header along with a form.
+- The forms input fields are simply username and password with relevant icons.
+* Underneath the form is some text asking if the user is new to the site and asks if the user would like to register an account.
+- The 'Register account' text is a link to the register page.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+![login_page](*)
 
----
+### Register page
 
-Happy coding!
+* The register page has the same input fields as the log in page, but with slightly different icons, to show its a registration form.
+* The way this form works, it will not allow two of the same usernames, if a user trys to register with a username that has already been used, it will tell the user with a pop up.
+* Similar to the log in page, below the form is some text that has a link that directs exsisting users to the log in page.
+
+![register_page](*)
+
+### Deletion modals
+
+* The deletion modals are used as a form of defensive programming, clicking any delete button, whether its a review of a game, will cause the modal to appear, asking if the user would like to continue.
+* The user has two buttons within this modal;
+- Delete - clicking this button will delete the game or review in question.
+- Cancel - clicking this button will close the modal and redirect the user to the relevant page.
+
+![delete_modal](*)
+
+## Design
+
+### Images
+
+The images used throughout the website are relivant to each game.
+* The images are Game covers used on physical copies of the game.
+
+### Colour scheme
+
+* The colors of indigo and black used throughout help contrast the white text.
+* The two colors also help ease the users eyes. It reduces the light emitted by device screens while maintaining the minimum colour contrast ratios required for accessability.
+
+### Fonts 
+
+unknown.
+
+## Wireframes
+
+The wireframes for the webpage can be viewed here.
+
+## Languages
+
+* [HTML5](https://en.wikipedia.org/wiki/HTML5)
+* [CSS](https://en.wikipedia.org/wiki/CSS)
+* [JavaScript](*)
+* [Python](*)
+
+## Tools
+
+* [Gitpod](https://www.gitpod.io/) - Used as a cloud-based IDE.
+* [Github](https://github.com/) - Used to secure code online.
+* [Git](https://git-scm.com/) - Version control.
+* [Balsamiq](https://balsamiq.com/) - Used to create wireframes.
+* [Font Awesome](https://fontawesome.com/icons) - For the various icons used.
+* Google Chrome Dev tools - for proofreading code.
+* [Am I Responsive?](http://ami.responsivedesign.is/) - To see the responsiveness of the website on multiple devices.
+* [WebAIM](https://webaim.org/resources/contrastchecker/#:~:text=WCAG%202.0%20level%20AA%20requires,such%20as%20form%20input%20borders) - Used to check the contrast between foreground and background colours.
+* [pep8online](http://pep8online.com/) - Used to make sure my code meets the satisfactory PEP8 compliance.
+
+## Testing
+
+To view all testing documentation click [here](TESTING.md)
+
+## Deployment
+
+
+
+### Local Deployment
+
+
+
+## Credits
+
+* [Font Awesome](https://fontawesome.com/icons) - The icons used.
+* [Materialize](*)
+* [Stack Overflow](https://stackoverflow.com/) - For help debugging and fixes throughout.
+* My mentor - For helpful tips and debugging.
+* Love Running - The code to make the hero-image and animation effect on the homepage was used from Code Institute.
+* [Wikipedia](*) - For the images used for the games.
+
+
+## Acknowledgements
+
+* To create this website, I used material and information covered in the Full Stack Development course by Code Institute. As well as information from the gitSlack Community Channels, Stack Overflow and W3Schools.
+
+* Tim Nelson, my mentor, for reviewing my work and providing useful, help, feedback and advice throughout.
