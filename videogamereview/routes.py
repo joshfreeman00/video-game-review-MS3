@@ -29,7 +29,7 @@ def add_review():
             "review_score": request.form.get("review_score")
         }
         mongo.db.reviews.insert_one(review)
-        flash("You have wrote a review!")
+        flash("You wrote a review!")
         return redirect(url_for("get_reviews"))
 
     games = list(Game.query.order_by(Game.game_name).all())
@@ -51,7 +51,6 @@ def edit_review(review_id):
             "review_title": request.form.get("review_title"),
             "review_by": session["user"],
             "game_name": request.form.get("game_name"),
-            "game_id": request.form.get("game_id"),
             "review_desc": request.form.get("review_desc"),
             "review_score": request.form.get("review_score")
         }
@@ -59,7 +58,7 @@ def edit_review(review_id):
         flash("You have successfully updated your review!")
 
     games = list(Game.query.order_by(Game.game_name).all())
-    return render_template("add_review.html", games=games)
+    return render_template("edit_review.html", games=games)
 
 
 # route to delete a review
