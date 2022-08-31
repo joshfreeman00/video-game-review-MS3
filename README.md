@@ -11,7 +11,7 @@ A deployed link is available [here.](*)
 
 ## Goals
 
-The aim of the website is to allow the users to write reviews on their opinions of the game and rate it out of 5. Games are updated and added by the 'admin'.
+The aim of the website is to allow the users to write reviews on their opinions of the game and rate it out of 5. Games are managed by the 'admin'.
 
 ### User:
 
