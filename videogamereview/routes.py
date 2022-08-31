@@ -21,12 +21,15 @@ def add_review():
         return redirect("get_reviews")
 
     if request.method == "POST":
+        game = Game.query.filter(
+            Game.game_name == request.form.get("game_name")).first()
         review = {
             "review_title": request.form.get("review_title"),
             "review_by": session["user"],
             "game_name": request.form.get("game_name"),
             "review_desc": request.form.get("review_desc"),
-            "review_score": request.form.get("review_score")
+            "review_score": request.form.get("review_score"),
+            "game_id": game.id
         }
         mongo.db.reviews.insert_one(review)
         flash("You wrote a review!")
@@ -39,7 +42,7 @@ def add_review():
 # route for editing reviews
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
-    review = mongo.db.tasks.find_one({"_id": ObjectId(review_id)})
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
 
     # checking if the user is the same user that created the review in question
     if "user" not in session or session["user"] != review["review_by"]:
@@ -47,18 +50,23 @@ def edit_review(review_id):
         return redirect(url_for("get_reviews"))
 
     if request.method == "POST":
+        game = Game.query.filter(
+            Game.game_name == request.form.get("game_name")).first()
         submit = {
             "review_title": request.form.get("review_title"),
             "review_by": session["user"],
             "game_name": request.form.get("game_name"),
             "review_desc": request.form.get("review_desc"),
-            "review_score": request.form.get("review_score")
+            "review_score": request.form.get("review_score"),
+            "game_id": game.id
         }
-        mongo.db.tasks.update({"_id": ObjectId(review_id)}, submit)
+        mongo.db.reviews.update_one(
+            {"_id": ObjectId(review_id)}, {"$set": submit})
         flash("You have successfully updated your review!")
+        return redirect(url_for("get_reviews"))
 
     games = list(Game.query.order_by(Game.game_name).all())
-    return render_template("edit_review.html", games=games)
+    return render_template("edit_review.html", games=games, review=review)
 
 
 # route to delete a review
@@ -68,11 +76,11 @@ def delete_review(review_id):
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
 
     # check if the user is the same user as the author or is the admin
-    if "user" not in session or session["user"] != review["review_by"] or "admin":  # noqa
+    if "user" not in session or session["user"] != review["review_by"] or session["user"] != "admin":  # noqa
         flash("Only the review author or admin can delete reviews!")
         return redirect(url_for("get_reviews"))
 
-    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+    mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
     flash("The review has been successfully deleted.")
     return redirect(url_for("get_reviews"))
 
@@ -137,10 +145,11 @@ def delete_game(game_id):
         return redirect(url_for("get_games"))
 
     game = Game.query.get_or_404(game_id)
+    # deleting a game will delte every review associated to the game
+    mongo.db.reviews.delete_many({"game_id": int(game.id)})
+    # delete in postgres
     db.session.delete(game)
     db.session.commit()
-    # deleting a game will delte every review associated to the game
-    mongo.db.reviews.delete_many({"game_id": int(game_id)})
     flash("Succesfully deleted")
     return redirect(url_for("get_games"))
 
@@ -211,7 +220,10 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     if "user" in session:
-        return render_template("profile.html", username=session["user"])
+        reviews = list(mongo.db.reviews.find(
+            {'review_by': session["user"].lower()}))
+        return render_template(
+            "profile.html", username=session["user"], reviews=reviews)
 
     return redirect(url_for("login"))
 
