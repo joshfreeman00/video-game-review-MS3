@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">Add a Review</h3>
+<h3 class="center-align">Edit Review</h3>
 
 <div class="card-panel row">
-    <form class="col s12" method="POST" action="{{ url_for('add_review') }}">
+    <form class="col s12" method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
         <!-- review title -->
         <div class="row">
             <div class="input-field col s12">
@@ -42,8 +42,8 @@
         <!-- review description -->
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="review_desc" name="review_desc" value="{{ review.review_desc }}" type="text" minlength="1"
-                    maxlength="300" class="materialize-textarea validate" required></textarea>
+                <textarea id="review_desc" name="review_desc" type="text" minlength="1"
+                    maxlength="300" class="materialize-textarea validate" required>{{ review.review_desc }}</textarea>
                 <label for="review_desc">Description</label>
             </div>
         </div>
