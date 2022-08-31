@@ -162,7 +162,7 @@ The images used throughout the website are relivant to each game.
 
 ### Fonts 
 
-As ![Materialize](https://materializecss.com/) is used for CSS. Their default font is Roboto 2.0, which is whats used throughout the site.
+As [Materialize](https://materializecss.com/) is used for CSS. Their default font is Roboto 2.0, which is whats used throughout the site.
 
 ## Wireframes
 
@@ -194,11 +194,97 @@ To view all testing documentation click [here](TESTING.md)
 
 ## Deployment
 
+The live deployed application can be found at [video-game-review-ms3](https://video-game-review-ms3.herokuapp.com/).
 
+### Heroku
+
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select *New* in the top-right corner of your Heroku Dashboard, and select *Create new app* from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select *Create App*.
+- From the new app *Settings*, click *Reveal Config Vars*, and set the following key/value pairs:
+  - `IP` 0.0.0.0
+  - `PORT` 5000
+  - `MONGO_URI` (insert your own MongoDB URI key here). To get the `MONGO_URI`, follow the steps outlined below.
+
+### MongoDB
+
+You will need to sign-up for a [MongoDB](https://www.mongodb.com/) account.
+
+The name of the database on Mongo should be called **video_game_review**.
+
+The only collection needed for this project is called **reviews**.
+
+Click on the cluster created for the project.
+
+Click on the _Connect_ button.
+
+Click _Connect Your Application_.
+
+Copy the connection string and ensure to replace `<password>` with your own password.
+
+Paste this string into the env.py file and also Heroku config var as the value for the `MONGO_URI` key.
+
+  - `MONGO_DBNAME` (insert your own MongoDB DB Name key here). The `MONGO_DBNAME` is the name given to the database created within the cluster on the MongoDB website as shown in the screenshot below.
+
+  - `DATABASE_URL` (this comes from the _Resources_ tab, you can get your own Postgres Database using the Free Hobby Tier)
+    - Click on the _Resources_ tab.
+    - Search for Postgres in the 'Add-ons' search bar.
+    - Select Heroku Postgres as shown in the screenshot below.
+
+  - `SECRET_KEY` (this can be any random secret key)
+
+Heroku needs two additional files in order to deploy properly.
+- requirements.txt
+- Procfile
+
+You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`. If you have your own packages that have been installed, then the requirements file needs updated using: `pip3 freeze --local > requirements.txt`
+
+The Procfile can be created with the following command: `echo web: python run.py > Procfile`
+
+For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
+
+Either:
+- Connect Heroku and GitHub.
+- Then select "Automatic Deployment" from the Heroku app.
+- Click the _Deploy Branch_ button.
+
+Or:
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a <app_name>` (replace app_name with your app, without the angle-brackets)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type: `git push heroku main`
+
+The frontend terminal should now be connected and deployed to Heroku.
 
 ### Local Deployment
 
+*Gitpod* IDE was used to write the code for this project.
 
+To make a local copy of this repository, you can clone the project by typing the follow into your IDE terminal:
+- `git clone https://github.com/joshfreeman00/video-game-review-MS3.git`
+
+You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`.
+
+Create an `env.py` file, and add the following environment variables:
+
+```python
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("MONGO_URI", "insert your own MongoDB URI key here")
+os.environ.setdefault("MONGO_DBNAME", "insert your own MongoDB DB Name key here")
+os.environ.setdefault("DB_URL", "your local Postgres database")
+os.environ.setdefault("DATABASE_URL", "from your Hobby Tier on the Resources tab from Heroku")
+os.environ.setdefault("SECRET_KEY", "this can be any random secret key")
+os.environ.setdefault("DEVELOPMENT", "set to True in local environment, but False on deployment")
+```
+
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/joshfreeman00/video-game-review-MS3)
 
 ## Credits
 
