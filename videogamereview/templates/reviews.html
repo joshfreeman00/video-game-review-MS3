@@ -30,10 +30,12 @@
                     <p>{{ review.review_desc }}</p>
                 </div>
             </div>
+            {% if session.user|lower == 'admin' or session.user|lower == review.review_by|lower %}
             <div class="card-action">
                 <a href="{{ url_for('edit_review', review_id=review._id) }}" class="btn green accent-4">Edit</a>
                 <a href="#modal-{{ review._id }}" class="btn red right modal-trigger">Delete</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

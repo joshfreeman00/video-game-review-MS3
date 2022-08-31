@@ -3,30 +3,28 @@
 
 <h3 class="center-align">Games</h3>
 
+{% if session.user|lower == 'admin' %}
 <div class="row">
     <div class="left">
         <a href="{{ url_for('add_game')}}" class="btn-large indigo darken-4">Add a Game <i
                 class="fas fa-circle-plus right"></i></a>
     </div>
 </div>
+{% endif %}
 
 <div class="row">
     {% for game in games %}
     <div class="col s12 m6 l3">
         <div class="card">
-            <!-- <div class="card-image">
-                <img class="activator"
-                    src="{{ url_for('static', filename='videogamereview/static/images/sample-1.jpg') }}"
-                    alt="Game cover">
-                <a class="btn-floating halfway-fab waves-effect waves-light indigo"><i class="fas fa-plus"></i></a>
-            </div> -->
             <div class="card-content black-text">
                 <span class="card-title activator">{{ game.game_name }}<i
                         class="fa-solid fa-angles-up right "></i></span>
+                {% if session.user|lower == 'admin' %}
                 <div class="card-action">
                     <a href="{{ url_for('edit_game', game_id=game.id) }}" class="btn green accent-4">Edit</a>
                     <a href="#modal-{{ game.id }}" class="btn red right modal-trigger">Delete</a>
                 </div>
+                {% endif %}
             </div>
             <div class="card-reveal black-text">
                 <span class="card-title">{{ game.game_name }}<i class="fa-solid fa-xmark right"></i></span>
@@ -37,7 +35,7 @@
             </div>
         </div>
     </div>
-
+    {% if session.user|lower == 'admin' %}
     <!-- modal structure -->
     <div id="modal-{{ game.id }}" class="modal">
         <div class="modal-content black-text center-align">
@@ -49,6 +47,7 @@
             <a class="btn indigo darken-4 modal-close">Cancel</a>
         </div>
     </div>
+    {% endif %}
 
     {% endfor %}
 </div>
