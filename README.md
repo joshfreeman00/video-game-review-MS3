@@ -1,7 +1,7 @@
 # One Stop Game Reviews
 
 One Stop Game Reviews is a website designed to allow users to add reviews and rate the video games they have played.
-A deployed link is available [here.](*)
+A deployed link is available [here.](https://video-game-review-ms3.herokuapp.com/)
 
 ## Showcase of the site
 
@@ -46,15 +46,15 @@ As a admin;
 * The navigation links are located on the top right of the webpage, which links to the other available pages. Here users can easily use these links to navigate from each webpage.
 * For smaller devices, the navigation bar changes to a burger menu for a more responsive design for mobile or tablet users, this allows for a compact and user-friendly design. 
 
-![nav_bar](*)
+![nav_bar](docs/testing/nav-and-header.png)
 
-![nav_bar_burger](*)
+![nav_bar_burger](docs/testing/nav-burger.png)
 
 ### Header
 
 * The header cotains text displaying which page you are currently on.
 
-![header](*)
+![header](docs/testing/nav-and-header.png)
 
 ### Footer
 
@@ -67,7 +67,7 @@ As a admin;
 * The review page is the very first page the user lands on, as stated by the header. Here the user can see the reviews left by other users, seeing their rating, who the created the review and the reviews description.
 * Above the reviews is a button that reads "Add a review". If the user is not logged into an account, it will flash a message, stating that the user needs to be logged in first before creating a review. If the user is logged in, this button takes them to the "Add Review" page.
 
-![review_page](*)
+![review_page](docs/testing/reviews-page-user.png)
 
 ### Add review page
 
@@ -77,7 +77,7 @@ As a admin;
 - All input fields (with the exception of the "review by" field) are required to submit the form, this is highlighted by the change of text color to red.
 * Once the form has been filled in, the user can click the "Add Review" button, which will create a review and send the user back to the reviews page.
 
-![add_review](*)
+![add_review](docs/testing/add-review-page.png)
 
 ### Edit review page
 
@@ -85,7 +85,7 @@ As a admin;
 * Once the review has been edited, the user can click the edit review button, this edits the database and changes whatever the user edited. This also sends the user back to the reviews page.
 * For defensive programming, only the user that created the review (the author) can edit the review.
 
-![edit_review](*)
+![edit_review](docs/testing/edit-review-page.png)
 
 ### Games page
 
@@ -95,7 +95,7 @@ As a admin;
 - For the admin, There is a edit button and a delete button underneath the title of the game.
 * Above the game cards is a button to add a game.
 
-![games_page](*)
+![games_page](docs/testing/games-page-user.png)
 
 ### Add game page
 
@@ -103,7 +103,7 @@ As a admin;
 * Each input field is required as shown by the change of the text color to red.
 * The add game button at the bottom of the form publishes the game in the format of a card to the games page.
 
-![add_games](*)
+![add_games](docs/testing/add-game-page.png)
 
 ### Edit game page
 
@@ -111,7 +111,7 @@ As a admin;
 * All input fields are able to be edited and changed.
 * Once finished, and the Edit game button is clicked on, It sends the admin back to the games page and changes the games details.
 
-![edit_games](*)
+![edit_games](docs/testing/edit-game-page.png)
 
 ### Profile page
 
@@ -120,7 +120,7 @@ As a admin;
 - Along with the pages header, the reviews shown will also change as stated above.
 * Here the user can also edit/delete their reviews.
 
-![profile_page](*)
+![profile_page](docs/testing/user-profile-page.png)
 
 ### Log in page
 
@@ -129,7 +129,7 @@ As a admin;
 * Underneath the form is some text asking if the user is new to the site and asks if the user would like to register an account.
 - The 'Register account' text is a link to the register page.
 
-![login_page](*)
+![login_page](docs/testing/login-page.png)
 
 ### Register page
 
@@ -137,7 +137,7 @@ As a admin;
 * The way this form works, it will not allow two of the same usernames, if a user trys to register with a username that has already been used, it will tell the user with a pop up.
 * Similar to the log in page, below the form is some text that has a link that directs exsisting users to the log in page.
 
-![register_page](*)
+![register_page](docs/testing/register-page.png)
 
 ### Deletion modals
 
@@ -146,7 +146,9 @@ As a admin;
 - Delete - clicking this button will delete the game or review in question.
 - Cancel - clicking this button will close the modal and redirect the user to the relevant page.
 
-![delete_modal](*)
+![game_delete_modal](docs/testing/delete-game-modal.png)
+
+![review_delete_modal](docs/testing/delete-review-modal.png)
 
 ## Design
 
@@ -167,6 +169,20 @@ As [Materialize](https://materializecss.com/) is used for CSS. Their default fon
 ## Wireframes
 
 The wireframes for the webpage can be viewed here.
+
+* [review_page](docs/wireframes/reviews.png)
+
+* [review_page_mobile](docs/wireframes/reviews_mobile.png)
+
+* [game_page](docs/wireframes/games.png)
+
+* [game_page_mobile](docs/wireframes/games_mobile.png)
+
+* [create_review_page](docs/wireframes/create_review.png)
+
+* [login](docs/wireframes/login.png)
+
+* [register](docs/wireframes/register.png)
 
 ## Languages
 
