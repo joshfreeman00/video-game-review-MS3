@@ -65,6 +65,14 @@ To return to the readme click [here.](README.md)
 
     ![login_flash](docs/testing/login-flash.png)
 
+* Notifying the user if their username and/or password is incorrect:
+
+    - ![incorrect_login](docs/testing/incorrect-info.png)
+
+* Notifying the user if the username they select is already taken:
+
+    - ![username_taken](docs/testing/username-taken.png)
+
 * User authentication:
 
     - The image below is the view from user 'johndoe's account, note the edit and delete buttons are only avaliable for the review user has created.
