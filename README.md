@@ -210,13 +210,17 @@ The ERD diagram for the project can be viewed here.
 * [Gitpod](https://www.gitpod.io/) - Used as a cloud-based IDE.
 * [Github](https://github.com/) - Used to secure code online.
 * [Git](https://git-scm.com/) - Version control.
+* [Materialize](https://materializecss.com/) - Used for responsive front-end CSS framework.
 * [Balsamiq](https://balsamiq.com/) - Used to create wireframes.
 * [Font Awesome](https://fontawesome.com/icons) - For the various icons used.
 * Google Chrome Dev tools - for proofreading code.
 * [Am I Responsive?](http://ami.responsivedesign.is/) - To see the responsiveness of the website on multiple devices.
 * [WebAIM](https://webaim.org/resources/contrastchecker/#:~:text=WCAG%202.0%20level%20AA%20requires,such%20as%20form%20input%20borders) - Used to check the contrast between foreground and background colours.
 * [pep8online](http://pep8online.com/) - Used to make sure my code meets the satisfactory PEP8 compliance.
-* [MongoDB](https://www.mongodb.com/) - Used for the NoSQL database.
+* [MongoDB](https://www.mongodb.com/) - Used for the non-relational database.
+* [SQlAlchemy](https://www.sqlalchemy.org/) - Database ORM.
+* [postgres](https://aws.amazon.com/free/database/?trk=96d6f000-ff7c-40ae-9c43-738eedba7ac1&sc_channel=ps&s_kwcid=AL!4422!3!548811127430!e!!g!!postgres&ef_id=Cj0KCQjw08aYBhDlARIsAA_gb0e_aN71DN_-z5N7CipwHIH3gLB3z1HwUQiPkuxVPZslz7h2fixTQPcaAsCYEALw_wcB:G:s&s_kwcid=AL!4422!3!548811127430!e!!g!!postgres) - Used for the relational database.
+* [Flask](https://flask.palletsprojects.com/en/2.2.x/) - Template engine.
 
 ## Testing
 
