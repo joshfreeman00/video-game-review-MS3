@@ -184,6 +184,12 @@ The wireframes for the webpage can be viewed here.
 
 * [register](docs/wireframes/register.png)
 
+## ERD diagram
+
+The ERD diagram for the project can be viewed here.
+
+* [ERD](docs/testing/erd-diagram.png)
+
 ## Languages
 
 * [HTML5](https://en.wikipedia.org/wiki/HTML5)
