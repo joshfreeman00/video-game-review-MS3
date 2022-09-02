@@ -17,7 +17,6 @@ The aim of the website is to allow the users to write reviews on their opinions 
 
 As a user;
 
-* I want to understand the context of the website and what it has to offer.
 * I want to be able to register an account with the website to keep track of the reviews I have posted.
 * I want to easily log into my already registered account.
 * I want to easily log out of the account I am logged into, and be notified that I have successfully been logged out.
@@ -38,7 +37,7 @@ As a admin;
 * I would want the deletion of a game to delete any reviews that is associated with said game.
 * I would like defensive programming to be in effect if I was to attempt to delete a game.
 
-## Structure
+## Structure/Features
 
 ### Logo and Navigation bar
 
@@ -60,7 +59,7 @@ As a admin;
 
 * The footer contains external links to both Github and The Code Institute.
 
-![footer](*)
+![footer](docs/testing/footer.png)
 
 ### Review Page
 
