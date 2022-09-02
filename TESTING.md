@@ -6,9 +6,18 @@ To return to the readme click [here.](README.md)
 
 ### HTML validation
 
-* Validation for the HTML can be found [here.](https://validator.w3.org/nu/?doc=https%3A%2F%2Fvideo-game-review-ms3.herokuapp.com%2F)
+* Validation for the HTML can be found [here.](https://validator.w3.org)
 
-![css-validation](docs/testing/html-validation.png)
+    - Disclaimer: any warnings shown are to do with section elements not containing any h elements (e.g h1), this was brought up with my mentor and was deemed fine to submit.
+
+    ![html-reviews-validation](docs/testing/html-reviews-validation.png)
+    ![html-games-validation](docs/testing/html-games-validation.png)
+    ![html-login-validation](docs/testing/html-login-validation.png)
+    ![html-register-validation](docs/testing/html-register-validation.png)
+    ![html-add-review-validation](docs/testing/html-add-review-validation.png)
+    ![html-edit-review-validation](docs/testing/html-edit-review-validation.png)
+    ![html-add-game-validation](docs/testing/html-add-game-validation.png)
+    ![html-edit-game-validation](docs/testing/html-edit-game-validation.png)
 
 ### CSS validation
 
@@ -120,10 +129,6 @@ To return to the readme click [here.](README.md)
 
 ## User story testing
 
-* I want to understand the context of the website.
-
--
-
 * I want to be able to register an account with the website to keep track of the reviews I have posted.
 
 ![register_page](docs/testing/register-page.png)
@@ -195,7 +200,6 @@ To return to the readme click [here.](README.md)
     - Take not of the individual reviews star ratings above their review title.
 
     ![review_page_admin](docs/testing/reviews-page-admin.png)
-
 
 ## Environment testing
 
