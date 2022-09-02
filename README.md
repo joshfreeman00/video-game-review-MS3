@@ -20,7 +20,7 @@ As a user;
 * I want to understand the context of the website and what it has to offer.
 * I want to be able to register an account with the website to keep track of the reviews I have posted.
 * I want to easily log into my already registered account.
-* I want to easily log out of the account I am logged into.
+* I want to easily log out of the account I am logged into, and be notified that I have successfully been logged out.
 * I would like to access the site easily on a mobile phone or tablet.
 * I want to be able to check if there are any additional games that have been added.
 * I would like to be able to edit the reviews I have created.
