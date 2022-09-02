@@ -44,6 +44,51 @@ To return to the readme click [here.](README.md)
 
     ![run-py-validation](docs/testing/run-py-validation.png)
 
+## Defensive programming tests
+
+* Making sure the user is logged in, in order to write a review:
+
+    - If the user is logged in, clicking on the review button will direct the user to the "add review" page.
+
+    ![login](docs/testing/add-review-page.png)
+
+    - Otherwise, if the user is not logged in, a alert will flash, notifying the user they must log in to write a review.
+
+    ![login_flash](docs/testing/login-flash.png)
+
+* User authentication:
+
+    - The image below is the view from user 'johndoe's account, note the edit and delete buttons are only avaliable for the review user has created.
+
+    ![review_page_user](docs/testing/reviews-page-user.png)
+
+    - The image below is the view from an admins account, note that because the current session user is the admin, all edit and delete buttons are present on each review.
+
+    ![review_page_admin](docs/testing/reviews-page-admin.png)
+
+* Admin permissions:
+
+    - If the user is an admin, the site allows that user to manage the games, whether it be adding, editing or deleting them
+
+    ![add_games](docs/testing/add-game-page.png)
+    ![edit_games](docs/testing/edit-game-page.png)
+
+    - Therefore, if the user is not admin, alerts will flash, notifying the user that they are not permitted to manage the games.
+
+    ![add_games_alert](docs/testing/add-game-alert.png)
+    ![edit_games_alert](docs/testing/edit-game-alert.png)
+
+
+### Error handling
+
+* Error: 404
+
+![404_error](docs/testing/404-error.png)
+
+* Error: 500
+
+![500_error](docs/testing/500-error.png)
+
 ## Responsiveness
 
 * The following images will showcase how the project is shown on different devices and shows the responsiveness of the project.
