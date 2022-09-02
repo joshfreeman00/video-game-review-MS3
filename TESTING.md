@@ -174,7 +174,7 @@ To return to the readme click [here.](README.md)
 
     ![review_page_user](docs/testing/reviews-page-user.png)
 
-    - The image below is the view from an admins account, note that because the current session user is the admin, all edit and delte buttons are present on each review:
+    - The image below is the view from an admins account, note that because the current session user is the admin, all edit and delete buttons are present on each review:
 
     ![review_page_admin](docs/testing/reviews-page-admin.png)
 
