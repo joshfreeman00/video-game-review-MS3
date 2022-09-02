@@ -190,6 +190,14 @@ The ERD diagram for the project can be viewed here.
 
 * ![ERD](docs/testing/erd-diagram.png)
 
+  - The User(including admin) and Games tables are within the Postgres database.
+
+  - The Reviews table is within the non relational database of mongoDB.
+  
+  - The Reviews table has a relational connection to the Games table through the use of the game id from Postgres, as seen below.
+
+    ![mongo_postgres_relation](docs/testing/mongo-postgres-relation.png)
+
 ## Languages
 
 * [HTML5](https://en.wikipedia.org/wiki/HTML5)
