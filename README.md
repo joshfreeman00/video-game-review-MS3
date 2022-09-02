@@ -170,25 +170,25 @@ As [Materialize](https://materializecss.com/) is used for CSS. Their default fon
 
 The wireframes for the webpage can be viewed here.
 
-* [review_page](docs/wireframes/reviews.png)
+* ![review_page](docs/wireframes/reviews.png)
 
-* [review_page_mobile](docs/wireframes/reviews_mobile.png)
+* ![review_page_mobile](docs/wireframes/reviews_mobile.png)
 
-* [game_page](docs/wireframes/games.png)
+* ![game_page](docs/wireframes/games.png)
 
-* [game_page_mobile](docs/wireframes/games_mobile.png)
+* ![game_page_mobile](docs/wireframes/games_mobile.png)
 
-* [create_review_page](docs/wireframes/create_review.png)
+* ![create_review_page](docs/wireframes/create_review.png)
 
-* [login](docs/wireframes/login.png)
+* ![login](docs/wireframes/login.png)
 
-* [register](docs/wireframes/register.png)
+* ![register](docs/wireframes/register.png)
 
 ## ERD diagram
 
 The ERD diagram for the project can be viewed here.
 
-* [ERD](docs/testing/erd-diagram.png)
+* ![ERD](docs/testing/erd-diagram.png)
 
 ## Languages
 
