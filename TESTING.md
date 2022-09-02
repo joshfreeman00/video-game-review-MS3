@@ -95,7 +95,7 @@ To return to the readme click [here.](README.md)
 
     - Mobile devices:
 
-    ![mobile](*)
+    ![mobile](docs/testing/mobile-view.png)
 
     - Tablet devices:
 
