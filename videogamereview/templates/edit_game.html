@@ -30,15 +30,16 @@
             </div>
             <!-- release year -->
             <div class="input-field col s6">
-                <input id="release_year" name="release_year" value="{{ game.release_year }}" type="number" class="validate" required>
+                <input id="release_year" name="release_year" value="{{ game.release_year }}" type="number"
+                    class="validate" required>
                 <label for="release_year">Release Year</label>
             </div>
         </div>
         <!-- game description -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="game_description" name="game_description" value="{{ game.game_description }}" type="text"
-                    minlength="1" maxlength="300" class="validate" required>
+                <textarea id="game_description" name="game_description" minlength="1" maxlength="300"
+                    class="materialize-textarea validate" required>{{ game.game_description }}</textarea>
                 <label for="game_description">Description</label>
             </div>
         </div>
