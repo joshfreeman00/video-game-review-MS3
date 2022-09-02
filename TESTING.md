@@ -10,13 +10,28 @@ To return to the readme click [here.](README.md)
 
     - Disclaimer: any warnings shown are to do with section elements not containing any h elements (e.g h1), this was brought up with my mentor and was deemed fine to submit.
 
+    - Reviews page:
     ![html-reviews-validation](docs/testing/html-reviews-validation.png)
+
+    - Games page:
     ![html-games-validation](docs/testing/html-games-validation.png)
+
+    - Login page:
     ![html-login-validation](docs/testing/html-login-validation.png)
+
+    - Register page:
     ![html-register-validation](docs/testing/html-register-validation.png)
+
+    - Add review page:
     ![html-add-review-validation](docs/testing/html-add-review-validation.png)
+
+    - Edit review page:
     ![html-edit-review-validation](docs/testing/html-edit-review-validation.png)
+
+    - Add games page:
     ![html-add-game-validation](docs/testing/html-add-game-validation.png)
+
+    - Edit games page:
     ![html-edit-game-validation](docs/testing/html-edit-game-validation.png)
 
 ### CSS validation
