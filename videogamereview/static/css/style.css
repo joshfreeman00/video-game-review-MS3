@@ -14,6 +14,10 @@ main {
     line-height: 2;
 }
 
+.card-games {
+    min-height: 350px;
+}
+
 @media only screen and (max-width: 992px){
     nav .brand-logo {
         width: 100%;
