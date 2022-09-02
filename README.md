@@ -5,7 +5,7 @@ A deployed link is available [here.](https://video-game-review-ms3.herokuapp.com
 
 ## Showcase of the site
 
-![showcase](*)
+![showcase](docs/testing/am-i-responsive.png)
 
 ## UX
 
