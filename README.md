@@ -150,6 +150,30 @@ As a admin;
 
 ![review_delete_modal](docs/testing/delete-review-modal.png)
 
+### Admin only features
+
+* Managing games:
+
+  - If the user is an admin, the site allows that user to manage the games, whether it be adding, editing or deleting them
+
+  ![add_games](docs/testing/add-game-page.png)
+  ![edit_games](docs/testing/edit-game-page.png)
+
+  - Therefore, if the user is not admin, alerts will flash, notifying the user that they are not permitted to manage the games.
+
+  ![add_games_alert](docs/testing/add-game-alert.png)
+  ![edit_games_alert](docs/testing/edit-game-alert.png)
+
+* Review permissions:
+
+  - The image below is the view from an admins account, note that because the current session user is the admin, all edit and delete buttons are present on each review:
+
+  ![review_page_admin](docs/testing/reviews-page-admin.png)
+
+  - The image below is the view from user 'johndoe's account, note the edit and delete buttons are only avaliable for the review user has created:
+
+  ![review_page_user](docs/testing/reviews-page-user.png)
+
 ## Design
 
 ### Images
