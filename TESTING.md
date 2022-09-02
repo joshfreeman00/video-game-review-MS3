@@ -75,6 +75,10 @@ To return to the readme click [here.](README.md)
 
     ![review_page_admin](docs/testing/reviews-page-admin.png)
 
+    - If the user is not the review author nor the admin, an alert flash will notify the user then are not permitted to edit the review.
+
+    ![review_edit_alert](docs/testing/edit-review-flash.png)
+
 * Admin permissions:
 
     - If the user is an admin, the site allows that user to manage the games, whether it be adding, editing or deleting them
