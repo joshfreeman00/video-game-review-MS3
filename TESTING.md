@@ -142,7 +142,7 @@ To return to the readme click [here.](README.md)
 
     - Mobile:
 
-    ![mobile](*)
+    ![mobile](docs/testing/mobile-view.png)
 
     - Tablet:
 
