@@ -13,3 +13,13 @@ main {
 .flashes h4 {
     line-height: 2;
 }
+
+@media only screen and (max-width: 992px){
+    nav .brand-logo {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 5vw;
+    }
+}
+    
